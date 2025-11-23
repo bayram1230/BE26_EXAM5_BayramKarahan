@@ -1,0 +1,257 @@
+body {
+  font-family: 'Courier New', Courier, monospace;
+}
+/* Navbar Start */
+.navbar a {
+  color: #fff;
+}
+/* Navbar End */
+/* Index Start */
+.padding25 {
+  padding: 25px;
+}
+.max-width350 {
+  max-width: 350px;
+}
+.row {
+  justify-content: center;
+}
+.card-index {
+  padding: 25px;
+  margin: 40px auto;
+  border: rgba(81, 180, 49, 0.551) 10px solid;
+  border-radius: 10%;
+}
+.card-img {
+  margin: 0 auto;
+  border: rgba(81, 180, 49, 0.551) 4px solid;
+  padding: 10px;
+  object-fit: scale-down;
+  max-height: 190px;
+}
+.card-title {
+  text-align: center;
+  margin: 6% 0 15% 0;
+  font-weight: bold;
+  font-size: 30px;
+}
+.card p {
+  font-size: 17px;
+}
+.text-button {
+  float: right;
+}
+span {
+  font-weight: bold;
+}
+.publisher {
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: 1rem;
+}
+.pub-link {
+  max-width: 10rem;
+}
+.d-flex {
+  align-items: end;
+}
+/* Index End */
+/* Details Start */
+.margin-auto {
+  margin: auto auto;
+}
+.card {
+  margin: 10% auto;
+}
+.card-body {
+  padding: 0;
+}
+.col-md-4 {
+  padding: 10px;
+}
+.card-img2 {
+  margin: 0 auto;
+  object-fit: scale-down;
+  max-height: 190px;
+  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.4));
+}
+.card-border {
+  border: rgba(81, 180, 49, 0.551) 10px solid;
+  margin: 50px auto;
+}
+th {
+  text-shadow: 0.3px 0.3px rgba(0, 0, 0, 0.741);
+  color: black;
+  padding: 25px;
+}
+td {
+  font-weight: 550;
+  line-height: 2.5rem;
+}
+.details-body > p {
+  line-height: 1.5rem;
+  text-align: center;
+}
+.details-body > table > tr {
+  line-height: 4rem;
+}
+.line {
+  color: rgba(81, 180, 49, 0.551);
+  opacity: 1;
+  border-top: 8px solid;
+}
+.border-table {
+  border-left: rgba(81, 180, 49, 0.551) 8px solid;
+}
+.padding-top {
+  padding-top: 15px;
+}
+.padding-top2 {
+  margin-top: 30px;
+}
+.center {
+  margin: auto auto;
+}
+.col-md-4 {
+  display: flex;
+  padding: 25px;
+}
+.table-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+/* Details End */
+/* footer start */
+footer {
+  padding: 40px 0;
+  text-align: center;
+}
+.social-icons > a > i {
+  color: #fff;
+  font-size: 20px;
+  margin: auto auto;
+  transition: 0.3s;
+  border: #fff 1px solid;
+  border-radius: 10%;
+  padding: 5px 24px 5px 5px;
+}
+form > input {
+  min-width: 180px;
+  max-width: 400px;
+  margin: 1rem;
+}
+
+.copyright {
+  margin-top: 1rem;
+  font-size: 14px;
+  color: #ffffff;
+}
+/* Footer End */
+@media (max-width: 320px) {
+  /* Details Start */
+  .border-table {
+    border-left: none;
+    font-size: 15px;
+  }
+  .details-body {
+    margin-left: 0;
+    padding: 5px;
+  }
+  .details-body > p {
+    border-left: none;
+    padding-left: 0;
+    padding: 5px;
+    text-align: center;
+  }
+  .card {
+    padding: 15px;
+    border-radius: 0%;
+  }
+  .card-body {
+    padding-left: 0;
+    padding: 5px;
+  }
+  .pub-address {
+    padding-top: 15px;
+  }
+  .publisher-address {
+    padding-top: 15px;
+  }
+  .margin-bottom-dvd {
+    margin-bottom: 0;
+    padding: 50px;
+  }
+  .margin-bottom {
+    margin-bottom: 0;
+    padding: 50px;
+  }
+  th {
+    padding-left: 0;
+    padding: 10px;
+  }
+  td {
+    line-height: 1.5rem;
+  }
+  .padding50 {
+    padding: 50px;
+  }
+  .details-body > p {
+    border-left: none;
+  }
+  .border-table {
+    border-left: none;
+  }
+  /* Details End */
+  /* Index Start */
+  .card-img320 {
+    max-height: 150px;
+    max-width: 150px;
+  }
+
+  /* Index End */
+}
+@media (max-width: 768px) {
+  /* Details Start */
+  .border-table {
+    border-left: none;
+  }
+  .details-body > p {
+    border-left: none;
+    padding-left: 0;
+  }
+  .card-img320 {
+    max-height: 180px;
+    max-width: 180px;
+  }
+  .card {
+    padding: 25px;
+    max-width: 265px !important;
+    margin: 40px auto;
+  }
+  .row > * {
+    justify-content: center;
+  }
+  .details-body > p {
+    border-left: none;
+  }
+  .border-table {
+    border-left: none;
+  }
+}
+
+/* Details End */
+@media (max-width: 991px) {
+  /* Details Start */
+  .card-img {
+    padding: 10px;
+  }
+  .max-width350 {
+    max-width: none;
+  }
+  /* Details End */
+}
+@media (min-width: 768px) {
+  .card {
+    padding: 40px;
+  }
+}
