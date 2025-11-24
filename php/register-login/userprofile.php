@@ -76,18 +76,14 @@ if (mysqli_num_rows($resultPets) > 0) {
           <a class="nav-link" href="register.php">Sign up</a>
         </li>
       </ul>
-      <a href="dashboard.php"><img src="../../img/<?= htmlspecialchars($picture) ?>" alt="profile picture" style="width:40px"></a>
     </div>
   </div>
 </nav>
     <!-- Navbar end -->
-    <h1>Welcome <?= $row['first_name']; ?><?= $row['last_name']; ?></h1>
-    <img src="../<?= htmlspecialchars($picture) ?>" alt="profile picture" style="width:50px">
-    <ul>
-        <li><a href="logout.php">Logout</a></li>
-        <li><a href="update_profile.php">Update profile</a></li>
-    </ul>
-     <!-- Main content-->
+    <div class="account-wrapper">
+      <h1>Welcome <?= $row['first_name'] . " " . $row['last_name'] ?></h1>
+    <img src="../../img/<?= htmlspecialchars($picture) ?>" alt="profile picture" style="width:180px">
+</div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 padding25">
         <?= $layout ?>
     </div>
