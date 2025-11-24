@@ -1,13 +1,8 @@
 <?php
 session_start();
 
-require_once "function.php";
-
-if(isset($_GET["restricted"])){
-    $pageMessage = "You dont have access to this page";
-}
-
-require_once "db_connect.php";
+require_once "../functions/function.php";
+require_once "../functions/db_connect.php";
 
 if (isset($_POST["login"])) {
     $email = $_POST["email"];
@@ -26,7 +21,6 @@ if (isset($_POST["login"])) {
 
     if (!$error) {
         $password = hash("sha256", $password);
-
         $sql = "SELECT * FROM users 
                 WHERE email = '$email' 
                   AND user_password = '$password'";
@@ -36,7 +30,7 @@ if (isset($_POST["login"])) {
             $row = mysqli_fetch_assoc($result);
 
             if ($row['user_type'] == "admin") {
-                header("Location: dashboard.php");
+                header("Location: ../crud/dashboard.php");
                 $_SESSION['admin'] = $row['id'];
                 exit;
             } elseif ($row['user_type'] == "user") {
@@ -64,7 +58,7 @@ if (isset($_POST["login"])) {
          integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
          crossorigin="anonymous"
          referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
    </head>
    <body>
        <div class="container">
@@ -78,10 +72,10 @@ if (isset($_POST["login"])) {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="../index.php">Home</a>
+          <a class="nav-link" aria-current="page" href="../../index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="create.php">Add pets</a>
+          <a class="nav-link" href="../crud/create.php">Senior</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="register.php">Sign up</a>

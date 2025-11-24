@@ -1,13 +1,11 @@
 <?php
+require_once '../functions/db_connect.php';  // Connect to database
 
-require_once 'db_connect.php';  // Connect to database
+$sql = "SELECT * FROM pets"; // Create variable, retrieve data and store  SQL data inside
 
-$petsId = $_GET['id'];
-
-$sql = "SELECT * FROM pets WHERE id = $petsId"; // Create variable, retrieve data and store  SQL data inside
 $result = mysqli_query($conn, $sql);
 
-    $layout = ""; // Dont forget to insert the $layout variable in the body of html
+$layout = ""; // Dont forget to insert the $layout variable in the body of html
 
 
 if(mysqli_num_rows($result) > 0){ // mysqli_num_rows($result) → counts how many rows are in the result of your query
@@ -26,7 +24,7 @@ if(mysqli_num_rows($result) > 0){ // mysqli_num_rows($result) → counts how man
                          <p>{$row['short_description']}</p>
                          <hr class='line'>
                          <div class='table-wrap'>
-                              <img src='{$row['picture']}' class='card-img-top card-img2 card-img320 center border-none' alt='{$row['name']}'>
+                              <img src='../{$row['picture']}' class='card-img-top card-img2 card-img320 center border-none' alt='{$row['name']}'>
                               <table class='border-table'>
                                     <tr>
                                         <th>Breed:</th>
@@ -85,27 +83,27 @@ if(mysqli_num_rows($result) > 0){ // mysqli_num_rows($result) → counts how man
       integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
   <div class="container">
    <!-- Navbar start-->
 <nav class="navbar navbar-expand-lg bg-success">
   <div class="container-fluid">
-    <a class="navbar-brand">MyLibrary</a>
+    <a class="navbar-brand">PetHero</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="../index.php">Home</a>
+          <a class="nav-link" aria-current="page" href="../../index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="create.php">Add media</a>
+          <a class="nav-link" href="create.php">Senior</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="register.php">Sign up</a>
+          <a class="nav-link" href="../register-login/register.php">Sign up</a>
         </li>
       </ul>
     </div>

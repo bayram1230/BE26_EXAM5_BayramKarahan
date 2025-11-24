@@ -1,25 +1,10 @@
 <?php
-require_once 'php/db_connect.php';
+// require_once "php/functions/pet_user_restriction.php";
+require_once 'php/functions/db_connect.php';
 
 $layout = "";
-
-// Get search term if submitted
-$search = isset($_GET['search']) ? trim($_GET['search']) : '';
-
 // Base SQL query
 $sql = "SELECT * FROM pets"; 
-
-// Add search condition if search term exists
-if (!empty($search)) {
-    $search_safe = mysqli_real_escape_string($conn, $search);
-
-    // Use CONCAT to allow full name search
-    $sql .= " WHERE title LIKE '%$search_safe%' 
-              OR author_first_name LIKE '%$search_safe%' 
-              OR author_last_name LIKE '%$search_safe%' 
-              OR CONCAT(author_first_name, ' ', author_last_name) LIKE '%$search_safe%'";
-}
-
 // Execute query
 $result = mysqli_query($conn, $sql);
 
@@ -39,7 +24,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                             <p class='card-text'>Gender: " . htmlspecialchars($row['gender']) . " </p>
                             <p class='card-text'>Age: " . htmlspecialchars($row['age']) . "</p>
                             <div class='text-button d-flex flex-column'>
-                                <a href='php/details.php?id={$row['id']}' class='btn btn-success pub-link'>More Details</a>
+                                <a href='php/crud/details.php?id={$row['id']}' class='btn btn-success pub-link'>More Details</a>
                             </div>
                         </div>
                     </div>";
@@ -78,22 +63,16 @@ if ($result && mysqli_num_rows($result) > 0) {
           <a class="nav-link" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="php/create.php">Add pets</a>
+          <a class="nav-link" href="php/crud/create.php">Senior</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="php/register.php">Sign up</a>
+          <a class="nav-link" href="php/register-login/register.php">Sign up</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
     <!-- Navbar end -->
-    <!-- Search Form Start-->
-    <form method="GET" action="index.php" class="d-flex flex-column my-4">
-        <input type="text" name="search" placeholder="Search by title or author" class="form-control" value="<?= htmlspecialchars($search) ?>">
-        <button type="submit" class="btn btn-success mt-2">Search</button>
-    </form>
-    <!-- Search form end -->
     <!-- Main content-->
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 padding25">
         <?= $layout ?>

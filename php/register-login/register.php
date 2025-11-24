@@ -1,29 +1,19 @@
 <?php
-   session_start();
-   if(!isset($_SESSION['admin']) && !isset($_SESSION['user'])){
-    header("Location: login.php?restricted=true");
-    exit;
-}
-   require_once "db_connect.php";
-   require_once "file_upload_user.php";
-   require_once "function.php";
 
-   $id = isset($_SESSION['admin']) ? $_SESSION['admin'] : $_SESSION['user'];
-   $sql = "SELECT * FROM users WHERE id = $id";
-   $result = mysqli_query($conn, $sql);
-   $row = mysqli_fetch_assoc($result);
-   $fname = $row['first_name'];
-   $lname = $row['last_name'];
-   $email = $row['email'];
+   require_once "../functions/db_connect.php";
+   require_once "../functions/file_upload.php";
+   require_once "../functions/function.php";
+
    $error = false;  // by default, a varialbe $error is false, means there is no error in our form
 
    $fname = $lname = $email = $date_of_birth = ""; // define variables and set them to empty string
    $fnameError = $lnameError = $emailError = $dateError = $passError = ""; // define variables that will hold error messages later, for now empty string
 
-   if(isset($_POST["update"])){
+   if(isset($_POST["sign-up"])){
        $fname = cleanInputs($_POST["fname"]);
        $lname = cleanInputs($_POST["lname"]);
        $email = cleanInputs($_POST["email"]);
+       $password = cleanInputs($_POST["password"]);
        $date_of_birth = cleanInputs($_POST["date_of_birth"]);
        $picture = fileUpload($_FILES["picture"]);
 
@@ -71,6 +61,14 @@
            }
        }
 
+       // simple validation for the "password"
+       if (empty($password)) {
+           $error = true;
+           $passError = "Password can't be empty!";
+       } elseif (strlen($password) < 6) {
+           $error = true;
+           $passError = "Password must have at least 6 characters.";
+       }
 
        if(!$error){ // if there is no error with any input, data will be inserted to the database
            // hashing the password before inserting it to the database
@@ -98,7 +96,7 @@
    <head>
        <meta charset="utf-8">
        <meta name="viewport" content="width=device-width, initial-scale=1">
-       <title>User Profile Update</title>
+       <title>Sign Up</title>
        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
        <link
          rel="stylesheet"
@@ -106,7 +104,7 @@
          integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
          crossorigin="anonymous"
          referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
    </head>
    <body>
        <div class="container">
@@ -120,10 +118,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="../index.php">Home</a>
+          <a class="nav-link" aria-current="page" href="../../index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="create.php">Add pets</a>
+          <a class="nav-link" href="../crud/create.php">Senior</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="register.php">Sign up</a>
@@ -133,7 +131,7 @@
   </div>
 </nav>
     <!-- Navbar end -->
-           <h1 class="text-center mt-5">User Profile Update</h1>
+           <h1 class="text-center mt-5">Sign Up</h1>
            <form method="post" autocomplete="off" enctype="multipart/form-data">
                <div class="mb-3 mt-3">
                    <label for="fname" class="form-label">First name</label>
@@ -159,7 +157,14 @@
                    <input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="<?= $email ?>">
                    <span class="text-danger"><?= $emailError ?></span>
                </div>
-               <button name="update" type="submit" class="btn btn-success">Update</button>
+               <div class="mb-3">
+                   <label for="password" class="form-label">Password</label>
+                   <input type="password" class="form-control" id="password" name="password">
+                   <span class="text-danger"><?= $passError ?></span>
+               </div>
+               <button name="sign-up" type="submit" class="btn btn-success">Create account</button>
+             
+               <span>you have an account already? <a href="login.php">sign in here</a></span>
            </form>
        </div>
                                 <!-- Footer Start -->
