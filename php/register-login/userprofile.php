@@ -70,9 +70,6 @@ if (mysqli_num_rows($resultPets) > 0) {
           <a class="nav-link" aria-current="page" href="../../index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../crud/create.php">Add pets</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="register.php">Sign up</a>
         </li>
       </ul>
