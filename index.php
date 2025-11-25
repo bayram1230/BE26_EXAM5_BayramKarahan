@@ -68,42 +68,47 @@ if ($result && mysqli_num_rows($result) > 0) {
            </div>
         <?php endif; ?>
        <!-- Success adopt alert -->
-       <!-- Navbar Start -->
-  <nav class="navbar navbar-expand-lg bg-success">
-    <div class="container-fluid">
-        <a class="navbar-brand text-white">PetHero</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link text-white" href="index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="index.php?senior=1">Senior</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="php/register-login/register.php">Sign up</a></li>
-            </ul>
-            <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link d-flex align-items-center dropdown-toggle"
-                       href="<?= getProfileLink() ?>"
-                       id="profileDropdown"
-                       role="button"
-                       data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        <img src="img/<?= htmlspecialchars($picture) ?>" 
-                             style="width:40px"
-                             class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end text-light" aria-labelledby="profileDropdown">
-                        <li><a class="dropdown-item text-dark" href="php/register-login/login.php">Login</a></li>
-                        <li><a class="dropdown-item text-dark" href="php/register-login/logout.php">Logout</a></li>
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg bg-success">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white">PetHero</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link text-white" href="index.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="index.php?senior=1">Senior</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="php/register-login/register.php">Sign up</a></li>
                     </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-  </nav>
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item dropdown d-flex align-items-center">
+                            <!-- Profilbild = klickbarer Link -->
+                            <a href="<?= getProfileLink() ?>" class="me-2">
+                                <img src="img/<?= htmlspecialchars($picture) ?>" 
+                                     style="width:40px"
+                                     class="rounded-circle">
+                            </a>
+                            <!-- Pfeil = Dropdown -->
+                            <a class="nav-link dropdown-toggle p-0"
+                               href="#"
+                               id="profileDropdown"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false"></a>
+                            <ul class="dropdown-menu dropdown-menu-end text-light"
+                                aria-labelledby="profileDropdown">
+                                <li><a class="dropdown-item text-dark" href="php/register-login/login.php">Login</a></li>
+                                <li><a class="dropdown-item text-dark" href="php/register-login/logout.php">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar End -->
 <!-- Navbar End -->
          <!-- Main Content Start -->
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 padding25">

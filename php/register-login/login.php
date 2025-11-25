@@ -72,15 +72,22 @@ if (isset($_POST["login"])) {
                         <li class="nav-item"><a class="nav-link" href="../crud/create.php">Senior</a></li>
                         <li class="nav-item"><a class="nav-link" href="register.php">Sign up</a></li>
                     </ul>
-                    <div class="dropdown text-end d-flex align-items-center">
-                        <a href="<?= getProfileLink() ?>" class="me-1">
-                             <img src="<?= BASE_URL ?>img/<?= htmlspecialchars(getProfilePicture($conn)) ?>" style="width:40px" class="rounded-circle">
-                        </a>
-                        <button class="btn dropdown-toggle p-0 text-light" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;background:transparent;"></button>
-                        <ul class="dropdown-menu dropdown-menu-end text-dark">
-                            <li><a class="dropdown-item text-dark" href="login.php">Login</a></li>
-                        </ul>
-                    </div>
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item dropdown d-flex align-items-center">
+                            <a href="<?= getProfileLink() ?>" class="me-2">
+                                <img src="<?= BASE_URL ?>img/<?= htmlspecialchars(getProfilePicture($conn)) ?>" style="width:40px" class="rounded-circle">
+                            </a>
+                            <a class="nav-link dropdown-toggle p-0"
+                               href="#"
+                               id="profileDropdown"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false"></a>
+                            <ul class="dropdown-menu dropdown-menu-end text-dark" aria-labelledby="profileDropdown">
+                                <li><a class="dropdown-item text-dark" href="login.php">Login</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
