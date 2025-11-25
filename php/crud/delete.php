@@ -1,6 +1,7 @@
 <?php
 require_once "../functions/user_restriction.php";
 require_once "../functions/db_connect.php";
+require_once "../functions/get_profile.php";
 
 $id = $_GET['id'];
 $sql = "SELECT * FROM `pets` WHERE id = $id";

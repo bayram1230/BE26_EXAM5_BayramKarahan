@@ -1,4 +1,5 @@
-<?php
+<?php 
+//login/logout ---> user/admin
 session_start();
 unset($_SESSION['user']);
 unset($_SESSION['admin']);

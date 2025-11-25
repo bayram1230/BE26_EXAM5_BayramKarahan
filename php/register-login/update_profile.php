@@ -5,8 +5,9 @@
     exit;
 }
    require_once "../functions/db_connect.php";
-   require_once "../functions/file_upload_user.php";
+   require_once "../functions/file_upload.php";
    require_once "../functions/function.php";
+   require_once "../functions/get_profile.php";
 
    $id = isset($_SESSION['admin']) ? $_SESSION['admin'] : $_SESSION['user'];
    $sql = "SELECT * FROM users WHERE id = $id";
@@ -110,29 +111,34 @@
    </head>
    <body>
        <div class="container">
-      <!-- Navbar start-->
-<nav class="navbar navbar-expand-lg bg-success">
-  <div class="container-fluid">
-    <a class="navbar-brand">PetHero</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="../../index.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../crud/create.php">Add pets</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="register.php">Sign up</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-    <!-- Navbar end -->
+        <!-- Navbar start-->
+        <nav class="navbar navbar-expand-lg bg-success">
+            <div class="container-fluid">
+                <a class="navbar-brand">PetHero</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="../../index.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="create.php">Senior</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../register-login/register.php">Sign up</a></li>
+                    </ul>
+                    <!-- Avatar + Dropdown -->
+                    <div class="dropdown text-end d-flex align-items-center">
+                        <a href="<?= getProfileLink() ?>" class="me-1">
+                            <img src="<?= BASE_URL ?>img/<?= htmlspecialchars(getProfilePicture($conn)) ?>" style="width:40px" class="rounded-circle">
+                        </a>
+                        <button class="btn dropdown-toggle p-0 text-light" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="border:none;background:transparent;"></button>
+                        <ul class="dropdown-menu dropdown-menu-end text-dark">
+                            <li><a class="dropdown-item text-dark" href="../register-login/login.php">Login</a></li>
+                            <li><a class="dropdown-item text-dark" href="../register-login/logout.php">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar end -->
            <h1 class="text-center mt-5">User Profile Update</h1>
            <form method="post" autocomplete="off" enctype="multipart/form-data">
                <div class="mb-3 mt-3">

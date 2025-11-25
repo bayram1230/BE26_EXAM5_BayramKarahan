@@ -32,26 +32,23 @@ function fileUploadPet($picture){ // file upload pets
                                       // Example: ['new_filename.jpg', 'OK'] or ['media.png', 'No picture selected...']
 }
 
-   function fileUploadUser($picture){ // file upload user
+   function fileUploadUser($picture){ // same function for user profile pictures
 
-       if($picture["error"] == 4){ // checking if a file has been selected, it will return 0 if you choose a file, and 4 if you didn't
-           $pictureName = "avatar.png"; // the file name will be product.png (default picture for a product)
+       if($picture["error"] == 4){ 
+           $pictureName = "avatar.png"; 
            $message = "No picture has been chosen, but you can upload an image later :)";
        }else{
-           $checkIfImage = getimagesize($picture["tmp_name"]); // checking if you selected an image, return false if you didn't select an image
+           $checkIfImage = getimagesize($picture["tmp_name"]); 
            $message = $checkIfImage ? "Ok" : "Not an image";
        }
-
        if($message == "Ok"){
-           $ext = strtolower(pathinfo($picture["name"],PATHINFO_EXTENSION)); // taking the extension data from the image
-           $pictureName = uniqid(""). "." . $ext; // changing the name of the picture to random string and numbers
-           $destination = "pictures/{$pictureName}"; // where the file will be saved
-           move_uploaded_file($picture["tmp_name"], $destination); // moving the file to the pictures folder
+           $ext = strtolower(pathinfo($picture["name"],PATHINFO_EXTENSION));
+           $pictureName = uniqid(""). "." . $ext; 
+           $destination = "pictures/{$pictureName}"; 
+           move_uploaded_file($picture["tmp_name"], $destination); 
        }
-
-       return [$pictureName, $message]; // returning the name of the picture and the message
+       return [$pictureName, $message]; 
    }
-
 ?>
 
 

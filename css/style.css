@@ -1,9 +1,24 @@
 body {
   font-family: 'Courier New', Courier, monospace;
 }
+.profile-dropdown {
+  max-width: 20px;
+  width: 10px;
+}
 /* Navbar Start */
 .navbar a {
   color: #fff;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+.navbar-toggler {
+  border-color: white;
+}
+.navbar-toggler:focus,
+.navbar-toggler:hover {
+  border-color: white;
+  box-shadow: none; /* optional */
 }
 /* Navbar End */
 /* Index Start */
@@ -38,8 +53,8 @@ body {
 .card p {
   font-size: 17px;
 }
-.text-button {
-  float: right;
+.text-button > a {
+  margin: auto auto;
 }
 span {
   font-weight: bold;
@@ -123,6 +138,10 @@ td {
 .table-wrap {
   display: flex;
   justify-content: space-between;
+}
+.table-location {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 /* Details End */
 /* footer start */
@@ -277,5 +296,15 @@ form > input {
 @media (min-width: 768px) {
   .card {
     padding: 40px;
+  }
+}
+/* Navbar Dropdown */
+@media (max-width: 991px) {
+  .navbar .dropdown-menu {
+    position: absolute !important;
+    left: 0 !important;
+    right: auto !important;
+    margin-top: 5px !important;
+    transform: none !important;
   }
 }
